@@ -5,6 +5,7 @@
         "--load-plugins=pylint_django"
     ],
     "cSpell.words": [
+        "qualidadeemis",
         "tipodevoz"
     ],
 }

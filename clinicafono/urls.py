@@ -30,5 +30,7 @@ urlpatterns = [
     path('', include('ataquevocal.urls')),
     path('', include('pitch.urls')),
     path('', include('loudness.urls')),
+    path('', include('modulacao.urls')),
+    path('', include('qualidadeemis.urls')),
     #path('', include('paciente.urls')),
 ]
