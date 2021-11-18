@@ -104,3 +104,14 @@ class PitchCad(models.Model):
         )
     )   
     
+class LoudnessCad(models.Model):
+    avaliacaoAD = models.ForeignKey(AvaliacaoAD, on_delete=models.DO_NOTHING)
+    loudness = models.ForeignKey(Loudness, on_delete=models.DO_NOTHING)
+    resposta = models.CharField(
+        default="N",
+        max_length=1,
+        choices=(
+            ('S', 'Sim'),
+            ('N', 'Nâo'),
+        )
+    )   
