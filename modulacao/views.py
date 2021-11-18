@@ -13,7 +13,7 @@ def modulacao(request):
             'modulacaos' : modulacaos,
             'form' : form,
         }
-        return render(request, 'modulacoes.html', context=context)
+        return render(request, 'modulacao.html', context=context)
     elif request.method == 'POST':
         
         form = ModulacaoForm(request.POST)
@@ -24,5 +24,6 @@ def modulacao(request):
             
         context = {
             'form' : form
-        }    
+        }   
+        return render(request, 'modulacao.html', context=context) 
         

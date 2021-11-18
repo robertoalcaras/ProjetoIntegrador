@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import fields
-from avaliacaoAD.models import AtaqueVocalCad, AvaliacaoAD, ComunicOralidade, PitchCad, RessonanciaCad, TipoVozCad
+from avaliacaoAD.models import AtaqueVocalCad, AvaliacaoAD, ComunicOralidade, ModulacaoCad, PitchCad, QualidadeemisCad, RessonanciaCad, TipoVozCad
 
 class AvaliacaoADForm(forms.ModelForm):
     class Meta:
@@ -31,3 +31,14 @@ class PitchCadForm(forms.ModelForm):
     class Meta:
         model = PitchCad
         fields = '__all__'        
+        
+class ModulacaoCadForm(forms.ModelForm):
+    class Meta:
+        model = ModulacaoCad
+        fields = '__all__'        
+        
+class QualidadeemisCadForm(forms.ModelForm):
+    class Meta:
+        model = QualidadeemisCad
+        fields = '__all__'
+            

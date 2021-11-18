@@ -2,11 +2,14 @@ from datetime import datetime
 from django.db import models
 from paciente.models import Paciente
 from ComunicOral.models import ComunicOral
+from qualidadeemis.views import qualidadeemis
 from ressonancia.models import Ressonancia
 from tipodevoz.models import TipoVoz
 from ataquevocal.models import AtaqueVocal
 from pitch.models import Pitch
 from loudness.models import Loudness
+from modulacao.models import Modulacao
+from qualidadeemis.models import Qualidadeemis
 
 class AvaliacaoAD(models.Model):
     ORELHA_CHOICE = (
@@ -115,3 +118,27 @@ class LoudnessCad(models.Model):
             ('N', 'Nâo'),
         )
     )   
+    
+class ModulacaoCad(models.Model):
+    avaliacaoAD = models.ForeignKey(AvaliacaoAD, on_delete=models.DO_NOTHING)
+    modulacao = models.ForeignKey(Modulacao, on_delete=models.DO_NOTHING)
+    resposta = models.CharField(
+        default="N",
+        max_length=1,
+        choices=(
+            ('S', 'Sim'),
+            ('N', 'Nâo'),
+        )
+    )    
+    
+class QualidadeemisCad(models.Model):
+    avaliacaoAD = models.ForeignKey(AvaliacaoAD, on_delete=models.DO_NOTHING)
+    qualidadeemis = models.ForeignKey(Qualidadeemis, on_delete=models.DO_NOTHING)
+    resposta = models.CharField(
+        default="N",
+        max_length=1,
+        choices=(
+            ('S', 'Sim'),
+            ('N', 'Nâo'),
+        )
+    )        

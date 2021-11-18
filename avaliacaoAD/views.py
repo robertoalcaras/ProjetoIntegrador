@@ -4,8 +4,8 @@ from django.shortcuts import render, get_object_or_404
 from ComunicOral.forms import ComunicOralForm
 from ressonancia.models import Ressonancia
 from tipodevoz.forms import TipoVozForm
-from .models import AtaqueVocalCad, AvaliacaoAD, ComunicOralidade, ComunicOral, LoudnessCad, PitchCad, RessonanciaCad, TipoVozCad, AtaqueVocalCad, PitchCad
-from avaliacaoAD.forms import AtaqueVocalCadForm, AvaliacaoAD, AvaliacaoADForm, ComunicOralidadeForm, PitchCadForm, RessonanciaCadForm, TipodeVozCadForm, AtaqueVocalCadForm, PitchCadForm
+from .models import AtaqueVocalCad, AvaliacaoAD, ComunicOralidade, ComunicOral, LoudnessCad, PitchCad, RessonanciaCad, TipoVozCad, AtaqueVocalCad, PitchCad, ModulacaoCad, QualidadeemisCad
+from avaliacaoAD.forms import AtaqueVocalCadForm, AvaliacaoAD, AvaliacaoADForm, ComunicOralidadeForm, PitchCadForm, RessonanciaCadForm, TipodeVozCadForm, AtaqueVocalCadForm, PitchCadForm, ModulacaoCadForm, QualidadeemisCadForm
 
 
 def avaliacaoad(request):
@@ -19,12 +19,16 @@ def avaliacaoad(request):
         formataquevocal_factory = inlineformset_factory(AvaliacaoAD, AtaqueVocalCad, form=AtaqueVocalCadForm, extra=3)
         formpitch_factory = inlineformset_factory(AvaliacaoAD, PitchCad, form=PitchCadForm, extra=3)
         formloudness_factory = inlineformset_factory(AvaliacaoAD, LoudnessCad, form=PitchCadForm, extra=3)
+        formmodulacao_factory = inlineformset_factory(AvaliacaoAD, ModulacaoCad, form=PitchCadForm, extra=3)
+        formqualidadeemis_factory = inlineformset_factory(AvaliacaoAD, QualidadeemisCad, form=QualidadeemisCadForm, extra=4)
         formoralidade = formoralidade_factory()
         formtipodevozcad = formtipodevozcad_factory()
         formressonanciacad = formressoanacia_factory()
         formataquevocalcad = formataquevocal_factory()
         formpitchcad = formpitch_factory()
         formloudnesscad = formloudness_factory()
+        formmodulacaocad = formmodulacao_factory()
+        formqualidadeemis  = formqualidadeemis_factory()
         
         context = {
             'avaliacaoads': avaliacaoads,
@@ -35,7 +39,8 @@ def avaliacaoad(request):
             'formataquevocalcad' : formataquevocalcad,
             'formpitchcad' : formpitchcad,
             'formloudnesscad' : formloudnesscad, 
-            
+            'formmodulacaocad' : formmodulacaocad,
+            'formqualidadeemis' : formqualidadeemis,
         }
         return render(request, 'avaliacaoad.html', context=context)
     elif request.method == 'POST':
@@ -46,13 +51,19 @@ def avaliacaoad(request):
         formataquevocal_factory = inlineformset_factory(AvaliacaoAD, RessonanciaCad, form=AtaqueVocalCad)
         formpitch_factory = inlineformset_factory(AvaliacaoAD, PitchCad, form=PitchCadForm, extra=3)
         formloudness_factory = inlineformset_factory(AvaliacaoAD, LoudnessCad, form=PitchCadForm, extra=3)
+        formmodulacao_factory = inlineformset_factory(AvaliacaoAD, ModulacaoCad, form=PitchCadForm, extra=3)
+        formqualidadeemis_factory = inlineformset_factory(AvaliacaoAD, QualidadeemisCad, form=QualidadeemisCadForm, extra=4)
+        
         formoralidade = formoralidade_factory(request.POST)
         formtipodevozcad = formtipodevozcad_factory(request.POST)
         formressonanciacad = formressoanacia_factory(request.POST)
         formataquevocalcad = formataquevocal_factory(request.POST)
         formpitchcad = formpitch_factory(request.POST)
         formloudnesscad = formloudness_factory(request.POST)
-        if form.is_valid() and formoralidade.is_valid() and formtipodevozcad.is_valid() and formressonanciacad.is_valid() and formataquevocalcad.is_valid():
+        formmodulacaocad = formmodulacao_factory(request.POST)
+        formqualidadeemiscad = formqualidadeemis_factory(request.POST)
+        
+        if form.is_valid() and formoralidade.is_valid() and formtipodevozcad.is_valid() and formressonanciacad.is_valid() and formataquevocalcad.is_valid() and formpitchcad.is_valid and formloudnesscad.is_valid and formmodulacaocad.is_valid and formqualidadeemiscad.is_valid:
             avaliacao = form.save()
             formoralidade.instance = avaliacao
             formtipodevozcad.instance = avaliacao
