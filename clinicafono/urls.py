@@ -20,7 +20,9 @@ from django.contrib import admin
 
 
 urlpatterns = [
+    
     path('admin/', admin.site.urls),
+    
     path('', include('paciente.urls')),
     path('', include('ProfissionalEnc.urls')),
     path('', include('ComunicOral.urls')),

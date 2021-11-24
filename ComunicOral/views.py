@@ -25,5 +25,48 @@ def comunicoral(request):
         
         return render(request, 'comunicoral.html', context=context)
 
+def vercomunicoral(request, pk):
+    data = {}
+    data['comunic'] = ComunicOral.objects.get(pk=pk)
+    return render(request, 'vercomunicoral.html', data) 
+
+def editcomunicoral(request, pk):
+    data = {}
+    data['comunic'] = ComunicOral.objects.get(pk=pk)
+    data['form'] = ComunicOralForm(instance=data['comunic'])
+    return render(request, 'comunicoral.html', data) 
+    #return render(request, 'profissionalenc.html', data)
+    return redirect('comunicoral')
+
+def updatecomunicoral(request, pk):
+    data = {}
+    data['comunic'] = ComunicOral.objects.get(pk=pk)
+    form = ComunicOralForm(request.POST, instance=data['comunic'])
+    if form.is_valid():
+        form.save()
+        return redirect('comunicoral')  
+
+def deletecomunicoral(request, pk):
+    comunic = ComunicOral.objects.get(pk = pk)
+    comunic.delete() 
+    return redirect('comunicoral') 
+
+def paginacao(request):
+    data = {}
+    all = ComunicOral.objects.all()
+    paginator = Paginator(all, 5)
+    pages = request.GET.get('page')
+    data['db'] = paginator.get_page(pages)
+    return render(request, 'comunicoral.html', data)
+
+def busca(request):
+    data = {}
+    search = request.GET.get('search')
+    if search:
+        data['db'] = ComunicOral.objects.filter(nome__icontains=search)
+    else:
+        data['db'] = ComunicOral.objects.all()
+     
+    return render(request, 'comunicoral.html', data)
 
 

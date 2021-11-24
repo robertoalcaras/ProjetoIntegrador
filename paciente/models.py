@@ -12,7 +12,7 @@ class Paciente(models.Model):
     RG = models.CharField(max_length=14)
     CPF = models.CharField(max_length=14)
     sexo = models.CharField(max_length=10, choices=SEXO_CHOICES)
-    Profissional = models.ForeignKey(ProfissionalEnc, on_delete=models.DO_NOTHING)
+    Profissional = models.ForeignKey(ProfissionalEnc, on_delete=models.CASCADE)
     DataCadastro = models.DateTimeField(default=datetime.now, blank=True)
     DataNascimento = models.DateTimeField(blank=True)
     

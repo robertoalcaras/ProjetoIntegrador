@@ -16,10 +16,14 @@
     <h1>1. Comunicação Oral</h1>
            
         {{ formoralidade.management_form }}
-        
+             
         {% for ft in formoralidade %}
-        <hr>
-            {{ft}}
+           
+            <ul>
+                <li>{{ ft }}</li>
+               
+            </ul>
+           
             
         {% endfor %}
 
@@ -66,6 +70,24 @@
             {{ft}}
             
         {% endfor %}
+    <h2> 2.6 Modulação</h2>  
+        {{ formmodulacaocad.management_form }}
+        
+        {% for ft in formmodulacaocad %}
+        <hr>
+            {{ft}}
+            
+        {% endfor %}  
+
+    <h2> 2.7 Qualidade na Emissão</h2>  
+        {{ formqualidadeemis.management_form }}
+        
+        {% for ft in formqualidadeemis %}
+        <hr>
+            {{ft}}
+            
+        {% endfor %}  
+
         <div class="row">
             <button type="submit" value="Salvar">Inserir</button>
         </div>
