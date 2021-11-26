@@ -16,8 +16,8 @@ def avaliacaoad(request):
         avaliacaoads = AvaliacaoAD.objects.all()
         #comunicoralidades = ComunicOralidade.objects.all()
         form = AvaliacaoADForm()
-        #formoralidade_factory = inlineformset_factory(AvaliacaoAD, ComunicOralidade, form=ComunicOralidadeForm, extra=9, can_delete=False, widgets={"ComunicOral": TextInput(), "resp_oralidade": RadioSelect()}, fields=('ComunicOral','resp_oralidade',), labels={'ComunicOral' : 'Pergunta','resp_oralidade': 'Resposta'})
-        formoralidade_factory = inlineformset_factory(AvaliacaoAD, ComunicOralidade, form=ComunicOralidadeForm, extra=9, can_delete=False)
+        formoralidade_factory = inlineformset_factory(AvaliacaoAD, ComunicOralidade, form=ComunicOralidadeForm, extra=9, can_delete=False, widgets={"ComunicOral": TextInput(), "resp_oralidade": RadioSelect()}, fields=('ComunicOral','resp_oralidade',), labels={'ComunicOral' : 'Pergunta','resp_oralidade': 'Resposta'})
+        #formoralidade_factory = inlineformset_factory(AvaliacaoAD, ComunicOralidade, form=ComunicOralidadeForm, extra=9, can_delete=False)
         #formoralidade_factory = modelform_factory(AvaliacaoAD, ComunicOralidade, form=ComunicOralidadeForm)
        
         formtipodevozcad_factory = inlineformset_factory(AvaliacaoAD, TipoVozCad, form=TipodeVozCadForm, extra=11, can_delete=False)

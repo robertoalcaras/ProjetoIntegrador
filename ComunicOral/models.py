@@ -1,5 +1,5 @@
 from django.db import models
-
+ 
 class ComunicOral(models.Model):
    dsc_habilidade = models.CharField(max_length=150) 
    

@@ -13,7 +13,7 @@
         <h1>Cadastro das Perguntas Comunicação Oral</h1>
     </div> 
     <div class="col-8 m-auto pt-3 pb=2 text-center">
-        <a href="/" class="btn btn-info">Voltar</a>
+        <a href="/comunicoral/" class="btn btn-info">Voltar</a>
     </div>
     <div class="col-8 m-auto pt-4 pb=2">
         <div id="result"></div>
@@ -35,33 +35,33 @@
                         <input type="text" id="search" name="search" class="form-control" placeholder="Buscar..." >
                     </form>
                 </div>   --> 
-        <div>
-     </div>
-<table class="table">
-        <thead class="thead-dark">
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Pergunta</th>
-            <th scope="col">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for comunic in comunicorals %}
+        </div>
+    </div>
+        <table class="table">
+            <thead class="thead-dark">
                 <tr>
-                    <th>{{comunic.id}}</th>
-                    <td>{{comunic.dsc_habilidade}}</td>
-                    
-                    <td>
-                        <a href="/vercomunicoral/{{comunic.id}}/" class="btn btn-dark">Visualizar</a>
-                        <a href="/editcomunicoral/{{comunic.id}}/" class="btn btn-primary">Editar</a>
-                        <a href="/deletecomunicoral/{{comunic.id}}" class="btn btn-danger btnDel">Deletar</a>
-                    </td>
+                <th scope="col">#</th>
+                <th scope="col">Pergunta</th>
+                <th scope="col">Ações</th>
                 </tr>
-            {% endfor %}
-            
-        </tbody>   
-    </table> 
-</div>    
+            </thead>
+            <tbody>
+                {% for comunic in comunicorals %}
+                    <tr>
+                        <th>{{comunic.id}}</th>
+                        <td>{{comunic.dsc_habilidade}}</td>
+                        
+                        <td>
+                            <a href="/vercomunicoral/{{comunic.id}}/" class="btn btn-dark">Visualizar</a>
+                            <a href="/editcomunicoral/{{comunic.id}}/" class="btn btn-primary">Editar</a>
+                            <a href="/deletecomunicoral/{{comunic.id}}" class="btn btn-danger btnDel">Deletar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>   
+        </table> 
+    </div>    
     <!--<div class="pagination">
         {% if db.has_previous %}
             <a href="?page={{db.previous_page_number}}"> < </a>
@@ -76,5 +76,5 @@
 
    {% load static %}
    <script src="{% static 'javascript.js' %}"></script>
-   
+</body>   
 </html>

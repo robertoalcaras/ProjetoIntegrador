@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from ComunicOral.forms import ComunicOralForm
 from ComunicOral.models import ComunicOral
-
+ 
 def comunicoral(request):
     if request.method == 'GET':
         comunicorals = ComunicOral.objects.all()
@@ -35,8 +35,7 @@ def editcomunicoral(request, pk):
     data['comunic'] = ComunicOral.objects.get(pk=pk)
     data['form'] = ComunicOralForm(instance=data['comunic'])
     return render(request, 'comunicoral.html', data) 
-    #return render(request, 'profissionalenc.html', data)
-    return redirect('comunicoral')
+    
 
 def updatecomunicoral(request, pk):
     data = {}
@@ -49,7 +48,7 @@ def updatecomunicoral(request, pk):
 def deletecomunicoral(request, pk):
     comunic = ComunicOral.objects.get(pk = pk)
     comunic.delete() 
-    return redirect('comunicoral') 
+    return redirect('/comunicoral/') 
 
 def paginacao(request):
     data = {}

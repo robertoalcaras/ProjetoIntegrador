@@ -1,5 +1,5 @@
 from django.db import models
-
+ 
 class TipoVoz(models.Model):
     descricao = models.CharField(max_length=150)
     
